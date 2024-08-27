@@ -120,6 +120,8 @@
     scripts = with pkgs.mpvScripts; [ modernx sponsorblock-minimal thumbfast ];
   };
 
+  programs.starship.enable = true;
+
   programs.vscode = {
     enable = true;
 

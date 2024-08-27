@@ -141,4 +141,7 @@
   services.spice-vdagentd.enable = true;
 
   programs.zsh.enable = true;
+
+  fonts.packages = with pkgs;
+    [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 }
