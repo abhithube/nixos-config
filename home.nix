@@ -7,7 +7,6 @@
     ffmpeg_7-full
     fzf
     mediainfo
-    mpv
     navi
     nodejs_22
     ripgrep
@@ -88,6 +87,37 @@
     userEmail = "athube@abhithube.com";
 
     extraConfig = { init.defaultBranch = "main"; };
+  };
+
+  programs.mpv = {
+    enable = true;
+
+    bindings = {
+      UP = "seek 0.01 keyframes";
+      DOWN = "seek -0.01 keyframes";
+      "CTRL+0" = ''af set ""'';
+      "CTRL+1" =
+        ''af set "lavfi=[pan=mono|c0=c0]"; show-text "Mono: channel 1"'';
+      "CTRL+2" =
+        ''af set "lavfi=[pan=mono|c0=c1]"; show-text "Mono: channel 2"'';
+      "CTRL+3" =
+        ''af set "lavfi=[pan=mono|c0=c2]"; show-text "Mono: channel 3"'';
+      "CTRL+4" =
+        ''af set "lavfi=[pan=mono|c0=c3]"; show-text "Mono: channel 4"'';
+      "CTRL+5" =
+        ''af set "lavfi=[pan=mono|c0=c4]"; show-text "Mono: channel 5"'';
+      "CTRL+6" =
+        ''af set "lavfi=[pan=mono|c0=c5]"; show-text "Mono: channel 6"'';
+    };
+
+    config = {
+      autofit = "100%x100%";
+      cache = "yes";
+      demuxer-max-bytes = "1000000KiB";
+      save-position-on-quit = "yes";
+    };
+
+    scripts = with pkgs.mpvScripts; [ modernx sponsorblock-minimal thumbfast ];
   };
 
   programs.vscode = {
