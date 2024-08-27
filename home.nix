@@ -1,6 +1,61 @@
 { pkgs, ... }: {
   home.stateVersion = "24.05";
 
+  programs.firefox = {
+    enable = true;
+
+    profiles.Main = {
+      bookmarks = [{
+        name = "Toolbar";
+        toolbar = true;
+
+        bookmarks = [{
+          name = "Proton";
+
+          bookmarks = [
+            {
+              name = "Blog";
+              url = "https://proton.me/blog";
+            }
+            {
+              name = "Drive";
+              url = "https://drive.proton.me/u/0";
+            }
+            {
+              name = "Mail";
+              url = "https://mail.proton.me/u/0";
+            }
+            {
+              name = "Pass";
+              url = "https://pass.proton.me/u/0";
+            }
+          ];
+        }];
+      }];
+
+      containers = {
+        youtube = {
+          id = 0;
+          name = "YouTube";
+          icon = "fingerprint";
+          color = "red";
+        };
+      };
+      containersForce = true;
+
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        multi-account-containers
+        pay-by-privacy
+        proton-pass
+        proton-vpn
+        return-youtube-dislikes
+        sponsorblock
+        ublock-origin
+        violentmonkey
+      ];
+    };
+  };
+
   programs.git = {
     enable = true;
 
