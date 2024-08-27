@@ -18,6 +18,12 @@
     zoxide
   ];
 
+  home.shellAliases = {
+    yt =
+      "yt-dlp -f 'bv[ext=mp4]+ba[ext=m4a]' -S vcodec:h264 -o '%(upload_date>%Y-%m-%d)s - %(uploader)s - %(title)s.%(ext)s'";
+    z = "zoxide";
+  };
+
   home.stateVersion = "24.05";
 
   programs.firefox = {
