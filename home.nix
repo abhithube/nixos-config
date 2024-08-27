@@ -1,4 +1,6 @@
 { pkgs, ... }: {
+  home.packages = with pkgs; [ firefox git vscode ];
+
   home.stateVersion = "24.05";
 
   programs.firefox = {
