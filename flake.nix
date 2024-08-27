@@ -11,6 +11,7 @@
       system = "aarch64-linux";
       modules = [
         ./configuration.nix
+        { nixpkgs.overlays = [ nur.overlay ]; }
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
