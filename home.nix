@@ -1,5 +1,22 @@
 { pkgs, ... }: {
-  home.packages = with pkgs; [ firefox git vscode ];
+  home.packages = with pkgs; [
+    awscli
+    eza
+    dust
+    fd
+    ffmpeg_7-full
+    fzf
+    mediainfo
+    mpv
+    navi
+    nodejs_22
+    ripgrep
+    rustup
+    xh
+    yazi
+    yt-dlp
+    zoxide
+  ];
 
   home.stateVersion = "24.05";
 
