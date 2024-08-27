@@ -96,7 +96,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [ nixd nixfmt-classic postgresql_16 ];
+  environment.systemPackages = with pkgs; [ nixd nixfmt-classic ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -126,6 +126,17 @@
   system.stateVersion = "24.05"; # Did you read the comment?
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  services.postgresql = {
+    enable = true;
+    ensureUsers = [{
+      name = "abhithube";
+      ensureDBOwnership = true;
+    }];
+    ensureDatabases = [ "abhithube" "colette" ];
+  };
+
+  services.redis.servers."" = { enable = true; };
 
   services.spice-vdagentd.enable = true;
 
