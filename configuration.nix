@@ -80,6 +80,7 @@
   users.users.abhithube = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
   };
 
   # Enable automatic login for the user.
@@ -127,4 +128,6 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   services.spice-vdagentd.enable = true;
+
+  programs.zsh.enable = true;
 }
